@@ -9,7 +9,8 @@ from torch_geometric.data import DenseDataLoader as DenseLoader
 from torch.utils.data import DataLoader
 from torch import nn
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = 'cpu'
+# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 import torch.utils.data as data

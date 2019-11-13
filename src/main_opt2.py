@@ -140,8 +140,8 @@ for dataset_name, Net in product(datasets, nets):
             model.to(device).reset_parameters()
             optimizer = Adam(model.parameters(), lr=args.lr, weight_decay=0.0001) # adding a negative weight regularizaiton such that it cannot be zero.
 
-            if torch.cuda.is_available():
-                torch.cuda.synchronize()
+            # if torch.cuda.is_available():
+            #     torch.cuda.synchronize()
 
             t_start = time.perf_counter()
             val_losses = []
