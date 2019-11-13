@@ -40,7 +40,8 @@ args = parser.parse_args()
 layers = [2]
 # hiddens = [16, 32, 64, 128]
 hiddens = [64]
-datasets = args.dataset
+datasets = []
+datasets.append(args.dataset)
 nets = [MultiLayerCoarsening]
 # args.train = True
 
@@ -114,6 +115,8 @@ def num_graphs(data):
 
 results = []
 for dataset_name, Net in product(datasets, nets):
+    print(dataset_name)
+    print(args.dataset)
     best_result = (float('inf'), 0, 0)  # (loss, acc, std)
     print('-----\n{} - {}'.format(dataset_name, Net.__name__))
     for num_layers, hidden in product(layers, hiddens):
