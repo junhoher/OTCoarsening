@@ -42,7 +42,7 @@ layers = [2]
 # hiddens = [16, 32, 64, 128]
 hiddens = [64]
 # datasets = ['NCI109', 'IMDB-BINARY', 'DD']
-datasets = ['DD']
+datasets = ['PROTEINS']
 # datasets.append(args.dataset)
 nets = [MultiLayerCoarsening]
 # args.train = True
