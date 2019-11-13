@@ -100,7 +100,11 @@ def sinkhorn_loss(x, y, epsilon, mu, nu, n, m, p=2, niter=100, acc=1e-3, unbalan
         err = (u - u1).abs().sum()
 
         actual_nits += 1
-        if (err < thresh).data.numpy():
+        # use GPU if asked to
+        if (gpu & torch.cuda.is_available()):
+            if (err < thresh).detach().cpu().numpy():
+                break
+        elif (err < thresh).data.numpy():
             break
     U, V = u, v
     pi = torch.exp(M(U, V))  # Transport plan pi = diag(a)*K*diag(b)
