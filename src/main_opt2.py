@@ -21,7 +21,7 @@ device = 'cpu'
 # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset', type=str, default='MUTAG')
+# parser.add_argument('--dataset', type=str, default='MUTAG')
 parser.add_argument('--epochs', type=int, default=100)
 parser.add_argument('--batch_size', type=int, default=128)
 parser.add_argument('--lr', type=float, default=0.01)
@@ -41,8 +41,8 @@ args = parser.parse_args()
 layers = [2]
 # hiddens = [16, 32, 64, 128]
 hiddens = [64]
-datasets = []
-datasets.append(args.dataset)
+datasets = [NCI109, IMDB-BINARY, DD]
+# datasets.append(args.dataset)
 nets = [MultiLayerCoarsening]
 # args.train = True
 
