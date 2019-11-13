@@ -41,7 +41,8 @@ args = parser.parse_args()
 layers = [2]
 # hiddens = [16, 32, 64, 128]
 hiddens = [64]
-datasets = ['NCI109', 'IMDB-BINARY', 'DD']
+# datasets = ['NCI109', 'IMDB-BINARY', 'DD']
+datasets = ['DD']
 # datasets.append(args.dataset)
 nets = [MultiLayerCoarsening]
 # args.train = True
