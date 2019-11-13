@@ -144,8 +144,8 @@ def k_fold(dataset, folds):
 
     for i in range(folds):
         train_mask = torch.ones(len(dataset), dtype=torch.uint8)
-        train_mask[test_indices[i]] = 0
-        train_mask[val_indices[i]] = 0
+        train_mask[test_indices[i].tolist()] = 0
+        train_mask[val_indices[i].tolist()] = 0
         train_indices.append(train_mask.nonzero().view(-1))
 
     return train_indices, test_indices, val_indices
