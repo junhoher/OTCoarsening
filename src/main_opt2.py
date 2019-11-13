@@ -20,12 +20,12 @@ from train_eval_opt import cross_validation_with_val_set_opt, getMiddleRes, MLP
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 parser = argparse.ArgumentParser()
+parser.add_argument('--dataset', type=str, default='MUTAG')
 parser.add_argument('--epochs', type=int, default=100)
 parser.add_argument('--batch_size', type=int, default=128)
 parser.add_argument('--lr', type=float, default=0.01)
 parser.add_argument('--lr_decay_factor', type=float, default=0.5)
 parser.add_argument('--lr_decay_step_size', type=int, default=50)
-
 parser.add_argument('--opt_iters', type=int, default=10)
 parser.add_argument('--eps', type=float, default=1.0)
 parser.add_argument('--ratio', type=float, default=0.5)
@@ -40,7 +40,7 @@ args = parser.parse_args()
 layers = [2]
 # hiddens = [16, 32, 64, 128]
 hiddens = [64]
-datasets = ['MUTAG']
+datasets = args.dataset
 nets = [MultiLayerCoarsening]
 # args.train = True
 
