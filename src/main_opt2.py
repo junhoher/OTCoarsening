@@ -17,7 +17,8 @@ from torch_geometric.data import DataLoader, DenseDataLoader as DenseLoader
 from torch.optim import Adam
 from train_eval_opt import cross_validation_with_val_set_opt, getMiddleRes, MLP
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = 'cpu'
+# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type=str, default='MUTAG')
@@ -110,7 +111,6 @@ def num_graphs(data):
         return data.num_graphs
     else:
         return data.x.size(0)
-
 
 
 results = []
