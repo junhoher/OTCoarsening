@@ -114,8 +114,6 @@ def num_graphs(data):
 
 results = []
 for dataset_name, Net in product(datasets, nets):
-    print(dataset_name)
-    print(args.dataset)
     best_result = (float('inf'), 0, 0)  # (loss, acc, std)
     print('-----\n{} - {}'.format(dataset_name, Net.__name__))
     for num_layers, hidden in product(layers, hiddens):

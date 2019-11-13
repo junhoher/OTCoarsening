@@ -4,7 +4,7 @@ import torch
 import torch.nn.functional as F
 from torch import tensor
 from torch.optim import Adam
-from sklearn.model_selection import StratifiedKFold
+from skcuda.model_selection import StratifiedKFold
 from torch_geometric.data import DenseDataLoader as DenseLoader
 from torch.utils.data import DataLoader
 from torch import nn
