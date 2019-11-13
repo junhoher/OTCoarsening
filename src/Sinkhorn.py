@@ -75,7 +75,7 @@ def sinkhorn_loss(x, y, epsilon, mu, nu, n, m, p=2, niter=100, acc=1e-3, unbalan
     def M(u, v):
         """Modified cost for logarithmic updates
         $M_{ij} = (-c_{ij} + u_i + v_j) / \epsilon$"""
-        return (-C + u.repeat(m, 1) + v.repeat(n, 1)) / epsilon  # u.repeat(m, 1).transpose(0, 1)
+        return (-C + u.repeat(m, 1).swapaxes(0, 1) + v.repeat(n, 1)) / epsilon  # u.repeat(m, 1).transpose(0, 1)
 
     def lse(A):
         "log-sum-exp"
