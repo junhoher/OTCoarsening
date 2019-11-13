@@ -1,4 +1,5 @@
 import torch
+import sys
 from torch.autograd import Variable
 
 
@@ -52,12 +53,12 @@ def sinkhorn_loss(x, y, epsilon, mu, nu, n, m, p=2, niter=100, acc=1e-3, unbalan
     """
     # The Sinkhorn algorithm takes as input three variables :
     # C = Variable(cost_matrix(x, y, p=p), requires_grad=True)  # Wasserstein cost function
-    C= cost_matrix(x, y, p=p)
+    C = cost_matrix(x, y, p=p)
 
     # use GPU if asked to
     if (gpu & torch.cuda.is_available()):
         C = C.cuda()
-        mu = nu.cuda()
+        mu = mu.cuda()
         nu = nu.cuda()
 
     # Parameters of the Sinkhorn algorithm.
@@ -75,8 +76,6 @@ def sinkhorn_loss(x, y, epsilon, mu, nu, n, m, p=2, niter=100, acc=1e-3, unbalan
     def M(u, v):
         """Modified cost for logarithmic updates
         $M_{ij} = (-c_{ij} + u_i + v_j) / \epsilon$"""
-        print(u.repeat(m, 1).transpose(0, 1).shape)
-        print(v.repeat(n, 1).shape)
         return (-C + u.repeat(m, 1).transpose(0, 1)+ v.repeat(n, 1)) / epsilon  # u.repeat(m, 1).transpose(0, 1)
 
     def lse(A):
